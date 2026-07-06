@@ -1,0 +1,132 @@
+.swsb-admin-panel {
+    padding: 18px;
+}
+
+.swsb-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 18px;
+    padding: 12px;
+}
+
+.swsb-admin-grid section,
+.swsb-slot-manager {
+    border: 1px solid #dcdcde;
+    background: #fff;
+    padding: 16px;
+}
+
+.swsb-admin-grid h3,
+.swsb-slot-manager h3 {
+    margin-top: 0;
+}
+
+.swsb-slot-manager {
+    margin: 12px;
+}
+
+.swsb-slot-presets {
+    margin: 14px 0 18px;
+    padding: 14px;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    background: #f8f9f6;
+}
+
+.swsb-slot-presets-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.swsb-slot-presets h4 {
+    margin: 0 0 4px;
+    font-size: 15px;
+}
+
+.swsb-slot-presets p {
+    margin: 0;
+    color: #646970;
+}
+
+.swsb-slot-preset-controls,
+.swsb-slot-range {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.swsb-slot-preset-controls label,
+.swsb-slot-range label {
+    display: grid;
+    gap: 4px;
+    font-weight: 600;
+}
+
+.swsb-slot-preset-controls select,
+.swsb-slot-preset-controls input,
+.swsb-slot-range select {
+    min-width: 120px;
+}
+
+.swsb-slot-range {
+    margin: 10px 0 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e4df;
+}
+
+.swsb-slot-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 8px;
+    max-height: 260px;
+    overflow: auto;
+    padding: 2px;
+}
+
+.swsb-slot-preset {
+    justify-content: center;
+    min-height: 34px;
+}
+
+.swsb-slot-preset.is-added {
+    border-color: #0b8f5a !important;
+    background: #eaffd3 !important;
+    color: #0b5f3e !important;
+    box-shadow: inset 0 0 0 1px #0b8f5a;
+}
+
+.swsb-slots-table input[type="text"],
+.swsb-slots-table input[type="number"],
+.swsb-slots-table select {
+    width: 100%;
+}
+
+.swsb-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.swsb-bookings-admin table td {
+    vertical-align: top;
+}
+
+@media (max-width: 900px) {
+    .swsb-admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .swsb-slot-presets-head {
+        display: block;
+    }
+
+    .swsb-slot-preset-controls {
+        margin-top: 12px;
+    }
+}
