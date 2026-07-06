@@ -1,3 +1,161 @@
+<<<<<<< HEAD
+(function () {
+    'use strict';
+
+    function boot() {
+        var addButton = document.getElementById('swsb-add-slot');
+        var addRangeButton = document.getElementById('swsb-add-slot-range');
+        var body = document.getElementById('swsb-slots-body');
+        var template = document.getElementById('swsb-slot-template');
+        var presetDay = document.getElementById('swsb-preset-day');
+        var presetCapacity = document.getElementById('swsb-preset-capacity');
+        var rangeStart = document.getElementById('swsb-range-start');
+        var rangeEnd = document.getElementById('swsb-range-end');
+        var presetButtons = Array.prototype.slice.call(document.querySelectorAll('.swsb-slot-preset'));
+
+        if (!addButton || !body || !template || addButton.dataset.swsbReady === 'yes') {
+            return;
+        }
+
+        function slotMinutes(label) {
+            var match = String(label || '').trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+            if (!match) return null;
+
+            var hour = parseInt(match[1], 10);
+            var minute = parseInt(match[2], 10);
+            var period = match[3].toUpperCase();
+
+            if (period === 'AM' && hour === 12) hour = 0;
+            if (period === 'PM' && hour !== 12) hour += 12;
+
+            return hour * 60 + minute;
+        }
+
+        function currentDay() {
+            return presetDay ? presetDay.value : 'all';
+        }
+
+        function currentCapacity() {
+            return Math.max(1, parseInt(presetCapacity ? presetCapacity.value : '1', 10) || 1);
+        }
+
+        function rowValues(row) {
+            var day = row.querySelector('select[name*="[day]"]');
+            var slot = row.querySelector('input[name*="[slot]"]');
+            return {
+                day: day ? day.value : 'all',
+                slot: slot ? slot.value.trim() : ''
+            };
+        }
+
+        function hasSlot(day, slot) {
+            return Array.prototype.slice.call(body.querySelectorAll('tr')).some(function (row) {
+                var values = rowValues(row);
+                return values.day === day && values.slot.toLowerCase() === String(slot).toLowerCase();
+            });
+        }
+
+        function updatePresetState() {
+            var day = currentDay();
+            presetButtons.forEach(function (button) {
+                var active = hasSlot(day, button.dataset.swsbPresetSlot || '');
+                button.classList.toggle('is-added', active);
+                button.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
+
+        function addSlot(slot, day, capacity) {
+            slot = String(slot || '').trim();
+            day = day || currentDay();
+            capacity = capacity || currentCapacity();
+
+            if (slot && hasSlot(day, slot)) {
+                updatePresetState();
+                return false;
+            }
+
+            var index = Date.now() + '-' + Math.floor(Math.random() * 100000);
+            var tbody = document.createElement('tbody');
+            tbody.innerHTML = template.innerHTML.replace(/__index__/g, index).trim();
+
+            Array.prototype.slice.call(tbody.children).forEach(function (row) {
+                var daySelect = row.querySelector('select[name*="[day]"]');
+                var slotInput = row.querySelector('input[name*="[slot]"]');
+                var capacityInput = row.querySelector('input[name*="[capacity]"]');
+                var enabledInput = row.querySelector('input[name*="[enabled]"]');
+
+                if (daySelect) daySelect.value = day;
+                if (slotInput) slotInput.value = slot;
+                if (capacityInput) capacityInput.value = capacity;
+                if (enabledInput) enabledInput.checked = true;
+
+                body.appendChild(row);
+            });
+
+            updatePresetState();
+            return true;
+        }
+
+        addButton.dataset.swsbReady = 'yes';
+        addButton.addEventListener('click', function () {
+            addSlot('', currentDay(), currentCapacity());
+        });
+
+        body.addEventListener('click', function (event) {
+            if (event.target && event.target.classList.contains('swsb-remove-slot')) {
+                event.preventDefault();
+                event.target.closest('tr').remove();
+                updatePresetState();
+            }
+        });
+
+        body.addEventListener('change', updatePresetState);
+
+        presetButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                addSlot(button.dataset.swsbPresetSlot || '', currentDay(), currentCapacity());
+            });
+        });
+
+        if (presetDay) {
+            presetDay.addEventListener('change', updatePresetState);
+        }
+
+        if (addRangeButton && rangeStart && rangeEnd) {
+            addRangeButton.addEventListener('click', function () {
+                var start = slotMinutes(rangeStart.value);
+                var end = slotMinutes(rangeEnd.value);
+                var day = currentDay();
+                var capacity = currentCapacity();
+
+                if (start === null || end === null) return;
+                if (end < start) {
+                    var swap = start;
+                    start = end;
+                    end = swap;
+                }
+
+                presetButtons.forEach(function (button) {
+                    var minutes = slotMinutes(button.dataset.swsbPresetSlot || '');
+                    if (minutes !== null && minutes >= start && minutes <= end) {
+                        addSlot(button.dataset.swsbPresetSlot, day, capacity);
+                    }
+                });
+
+                updatePresetState();
+            });
+        }
+
+        updatePresetState();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+}());
+=======
 /**
  * Smart Order Builder for WooCommerce
  * Admin Interface Javascript
@@ -109,3 +267,4 @@
 	}
 
 })( jQuery );
+>>>>>>> 18d880aa7f0ae12d83ae6325acf755817dc221a7

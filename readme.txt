@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+=== WooBookify ===
+Contributors: digitalsuncity
+Requires at least: 6.0
+Requires PHP: 8.0
+Requires Plugins: woocommerce
+Stable tag: 1.1.6
+
+WooBookify converts WooCommerce products into single-date, single-slot bookable services.
+
+== Features ==
+- Product-level booking settings tab
+- Single-date calendar picker
+- Product-specific single-label time slots
+- Slot capacity and day-wise slot availability
+- Booking validation
+- Deposit or full payment option
+- Booking summary on product, cart, checkout, order, and emails
+- Custom booking button text
+- Dedicated Bookings admin dashboard
+- CSV export
+- Global 12-hour or 24-hour time format
+- HPOS compatibility declaration
+
+== Changelog ==
+
+= 1.0.3 =
+- Add one-click half-hour time slot presets and a range generator to the product Booking Slot Manager.
+
+= 1.0.2 =
+- Keep Eastern time as the default timezone, remove timezone text from slot buttons, and harden cart payment/timezone metadata.
+
+= 1.0.1 =
+- Hide and reject time slots that have already passed for today's booking date in Eastern business time.
+=======
 === Smart Order Builder for WooCommerce ===
 Contributors: Antigravity AI
 Tags: woocommerce, cart, ajax, bundle, quick order, wholesale, b2b, order builder
@@ -58,3 +93,4 @@ This shortcode does not require arguments as it dynamically reads settings defin
 
 - Variable Products: The quick view drawer fully supports selecting variation attributes and adjusting quantities. However, adding variations directly from the main product table requires utilizing the Quick View eye icon to specify variant options first.
 - Third-Party Plugins: Complex product add-ons, file uploads, or customized dynamic pricing from external plugins are not natively mapped in the order builder table but will fall back to their default WooCommerce handlers during checkout.
+>>>>>>> 18d880aa7f0ae12d83ae6325acf755817dc221a7
