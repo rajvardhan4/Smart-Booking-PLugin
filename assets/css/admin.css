@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .swsb-admin-panel {
     padding: 18px;
 }
@@ -129,4 +130,97 @@
     .swsb-slot-preset-controls {
         margin-top: 12px;
     }
+=======
+/**
+ * Smart Order Builder for WooCommerce
+ * Admin Stylesheet
+ */
+
+/* Settings Form Tabs Styling */
+.sob-settings-form {
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	padding: 20px 30px 30px;
+	margin-top: 15px;
+	max-width: 1000px;
+	border-radius: 4px;
+}
+.sob-settings-form table.form-table th {
+	width: 250px;
+	font-weight: 600;
+	color: #1d2327;
+}
+.sob-settings-form table.form-table td input[type="number"] {
+	width: 100px;
+}
+.sob-settings-form table.form-table td select {
+	min-width: 200px;
+}
+
+/* Custom Post Type Metabox Styling */
+.sob-metabox-wrapper {
+	padding: 10px 0;
+}
+.sob-metabox-wrapper .sob-meta-row {
+	margin-bottom: 20px;
+}
+.sob-metabox-wrapper .sob-meta-row:last-child {
+	margin-bottom: 0;
+}
+.sob-metabox-wrapper label {
+	font-weight: 600;
+	color: #1d2327;
+	display: block;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+.sob-metabox-wrapper input[type="text"],
+.sob-metabox-wrapper input[type="number"] {
+	padding: 6px 10px;
+	height: 36px;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	box-shadow: 0 0 0 transparent;
+	transition: border-color 0.15s ease-in-out;
+}
+.sob-metabox-wrapper input[type="text"]:focus,
+.sob-metabox-wrapper input[type="number"]:focus {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: none;
+}
+.sob-metabox-wrapper select.sob-product-search-select {
+	display: block;
+	width: 100%;
+}
+
+/* Select2 Custom Overrides for CPT Metabox */
+.select2-container--default .select2-selection--multiple {
+	border: 1px solid #8c8f94 !important;
+	border-radius: 4px !important;
+	padding: 4px 6px !important;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border-color: #2271b1 !important;
+	outline: none !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	background-color: #f0f0f1 !important;
+	border: 1px solid #dcdcde !important;
+	border-radius: 3px !important;
+	color: #2c3338 !important;
+	margin-top: 4px !important;
+	padding: 3px 8px !important;
+	font-size: 13px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+	color: #b32d2e !important;
+	border-right: 1px solid #dcdcde !important;
+	margin-right: 6px !important;
+	padding: 0 4px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+	background-color: #fee2e2 !important;
+>>>>>>> 18d880aa7f0ae12d83ae6325acf755817dc221a7
 }
